@@ -1,0 +1,72 @@
+{
+  "name": "cir_offline_app",
+  "productName": "CIR_Offline_App",
+  "version": "5.0.0",
+  "description": "CIR Offline Application",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron . --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
+    "pack": "build --dir",
+    "dist": "build --win --ia32 --x64",
+    "installer": "gulp windows-installer"
+  },
+  "build": {
+    "appId": "cir.vestas.com",
+    "productName": "CIR Offline App",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "certificateFile": "./certs/localhost.pfx",
+      "certificatePassword": "VestasCIR@123",
+      "target": "NSIS",
+      "icon": "https://cirdevblobstorage.blob.core.windows.net/cirappcontainer/CIR_icon.ico"
+    }
+  },
+  "keywords": [],
+  "author": {
+    "name": "akgpt"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.1",
+    "electron-packager": "^9.1.0",
+    "electron-builder": "^20.4.1",
+    "electron-prebuilt": "^1.4.13",
+    "electron-simple-publisher": "^0.4.9"
+  },
+  "dependencies": {
+    "auto-updater": "^1.0.2",
+    "autoupdater": "^1.0.0",
+    "dialog": "^0.3.1",
+    "electron-builder-lib": "^20.5.0",
+    "electron-builder-squirrel-windows": "^20.5.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-windows-installer": "^1.7.8",
+    "electron-winstaller": "^2.6.3",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "jquery": "^3.2.1",
+    "release": "^2.5.4",
+    "remote": "^0.2.6"
+  }
+}

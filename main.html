@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CIR Offline APP</title>
+</head>
+
+<body>
+    <webview id="mywebview" preload="./preload.js" src="http://localhost:59485/" style="position:absolute;width:100%;height:100%;"
+        allowpopups></webview>
+    <script>
+
+        const webview = document.getElementById('mywebview')
+        webview.addEventListener('ipc-message', event => {
+        })
+
+        webview.addEventListener('dom-ready', function () {
+            webview.openDevTools();
+        });
+    </script>
+</body>
+
+</html>
